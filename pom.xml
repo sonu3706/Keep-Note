@@ -63,5 +63,7 @@
 
     <modules>
         <module>keepnote-authentication</module>
+        <module>keepnote-registry</module>
+
     </modules>
 </project>
