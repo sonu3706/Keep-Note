@@ -8,7 +8,8 @@ const routes: Routes = [
       import('./modules/authentication/authentication.module').then(
         auth => auth.AuthenticationModule
       )
-  }
+  },
+  { path: '', pathMatch: 'full', redirectTo: 'auth/login' }
 ];
 
 @NgModule({
