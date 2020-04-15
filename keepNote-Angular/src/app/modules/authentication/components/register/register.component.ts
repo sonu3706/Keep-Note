@@ -19,7 +19,18 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.requiredTrue]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
     });
+  }
+
+  public onSubmit(): void {
+    if (
+      this.registerForm.controls[`password`].value.length ===
+        this.registerForm.controls[`confirmPassword`].value.length &&
+      this.registerForm.controls[`password`].value ===
+        this.registerForm.controls[`confirmPassword`].value
+    ) {
+    }
   }
 }

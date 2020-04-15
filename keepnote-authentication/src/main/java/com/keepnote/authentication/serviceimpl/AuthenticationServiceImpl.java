@@ -12,30 +12,26 @@ import java.time.LocalDateTime;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
     private AuthenticationRepository authenticationRepository;
-    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public AuthenticationServiceImpl(AuthenticationRepository authenticationRepository, PasswordEncoder passwordEncoder) {
+    public AuthenticationServiceImpl(AuthenticationRepository authenticationRepository) {
         this.authenticationRepository = authenticationRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public User login(User user) {
-
         return null;
     }
 
     @Override
     public User register(User user) {
-        if(!authenticationRepository.existsById(user.getUserEmail())) {
+        if (!authenticationRepository.existsById(user.getUserEmail())) {
             user.setActiveStatus(Boolean.TRUE);
             user.setMemberSince(LocalDateTime.now());
             authenticationRepository.save(user);
-        }
-        else {
+        } else {
             System.out.println("throw exception");
         }
-        return null;
+        return user;
     }
 }

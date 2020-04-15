@@ -10,6 +10,10 @@ const routes: Routes = [
         auth => auth.AuthenticationModule
       )
   },
+  {
+    path: 'note',
+    loadChildren: () => import('./modules/note/note.module').then(note => note.NoteModule)
+  },
   { path: 'home', component: HomeComponent },
   { path: '', pathMatch: 'full', redirectTo: 'home' }
 ];
