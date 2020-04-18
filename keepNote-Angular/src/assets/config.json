@@ -1,0 +1,5 @@
+{
+  "baseUrl": {
+    "authentication": "http://localhost:8081/auth"
+  }
+}

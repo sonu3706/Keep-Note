@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +20,8 @@ public class AuthenticationController {
         this.authenticationService = authenticationService;
     }
 
-    @PostMapping()
-    public ResponseEntity<?> register(User user) {
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody User user) {
         ResponseEntity responseEntity = null;
         try {
             responseEntity = new ResponseEntity(authenticationService.register(user), HttpStatus.CREATED);
@@ -29,5 +30,10 @@ public class AuthenticationController {
         }
 
         return responseEntity;
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody User user){
+        return null;
     }
 }
