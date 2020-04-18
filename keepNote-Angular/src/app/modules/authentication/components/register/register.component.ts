@@ -10,7 +10,7 @@ import {AppConfigService} from "../../../../services/app-config.service";
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
 
-  
+
   constructor(public formBuilder: FormBuilder, private appConfigService: AppConfigService) {}
 
   ngOnInit(): void {
