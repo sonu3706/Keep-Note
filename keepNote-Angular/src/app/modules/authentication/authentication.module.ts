@@ -8,6 +8,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, AuthenticationComponent],
   imports: [AuthenticationRoutingModule, ReactiveFormsModule, FormsModule],
-  exports: []
+  exports: [],
 })
 export class AuthenticationModule {}

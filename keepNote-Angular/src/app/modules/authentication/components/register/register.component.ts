@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {AppConfigService} from "../../../../services/app-config.service";
+import { AppConfigService } from '../../../../services/app-config.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
 
-
-  constructor(public formBuilder: FormBuilder, private appConfigService: AppConfigService) {}
+  constructor(
+    public formBuilder: FormBuilder,
+    private appConfigService: AppConfigService
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
@@ -24,7 +26,7 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.requiredTrue]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
+      confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 

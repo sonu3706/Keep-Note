@@ -5,6 +5,6 @@ import { NoteRoutingModule } from './note-routing.module';
 
 @NgModule({
   declarations: [DashboardComponent],
-  imports: [CommonModule, NoteRoutingModule]
+  imports: [CommonModule, NoteRoutingModule],
 })
 export class NoteModule {}
