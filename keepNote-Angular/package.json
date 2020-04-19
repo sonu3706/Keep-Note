@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "precommit": "lint-staged",
-    "prettify": "prettier --write ./**/*.{json,css,scss,md,js,ts}"
+    "prettify": "prettier --write ./**/*.{json,css,scss,md,js,ts,html}"
   },
   "private": true,
   "dependencies": {
