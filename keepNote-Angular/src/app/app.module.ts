@@ -8,6 +8,7 @@ import { SharedModule } from './modules/shared/shared.module';
 import { ConfigHttpLoader } from '@ngx-config/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConfigLoader, ConfigModule } from '@ngx-config/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -21,6 +22,7 @@ import { ConfigLoader, ConfigModule } from '@ngx-config/core';
       useFactory: configFactory,
       deps: [HttpClient],
     }),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

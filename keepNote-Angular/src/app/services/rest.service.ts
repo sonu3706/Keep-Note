@@ -22,15 +22,15 @@ export class RestService<T> {
     return this.http.post(baseUrl.concat(restUrl), body, httpOptions);
   }
 
-  public http_get(baseUrl: string, restUrl: string): Observable<any> {
+  public http_get(baseUrl: string, restUrl: string): Observable<T> {
     return null;
   }
 
-  public http_put(baseUrl: string, restUrl: string): Observable<any> {
+  public http_put(baseUrl: string, restUrl: string): Observable<T> {
     return null;
   }
 
-  public http_delete(baseUrl: string, restUrl: string): Observable<any> {
+  public http_delete(baseUrl: string, restUrl: string): Observable<T> {
     return null;
   }
 }

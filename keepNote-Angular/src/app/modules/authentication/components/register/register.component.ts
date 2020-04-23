@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    debugger;
     let password = this.registerForm.controls['password'].value;
     let confirmPassword = this.registerForm.controls['confirmPassword'].value;
     if (this.registerForm.valid && this.isPasswordAndConfirmPasswordMatch(password, confirmPassword)) {

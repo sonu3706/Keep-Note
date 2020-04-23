@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 public class AuthenticationController {
-    private AuthenticationService authenticationService;
+    private final AuthenticationService authenticationService;
 
     @Autowired
     public AuthenticationController(AuthenticationService authenticationService) {
@@ -22,11 +22,11 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
-        ResponseEntity responseEntity = null;
+        ResponseEntity<?>responseEntity;
         try {
-            responseEntity = new ResponseEntity(authenticationService.register(user), HttpStatus.CREATED);
+            responseEntity = new ResponseEntity<>(authenticationService.register(user), HttpStatus.CREATED);
         } catch (Exception exception) {
-            responseEntity = new ResponseEntity(exception.getMessage(), HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<>(exception.getMessage(), HttpStatus.CONFLICT);
         }
 
         return responseEntity;
