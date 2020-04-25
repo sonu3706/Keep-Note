@@ -1,1 +1,11 @@
+com/keepnote/authentication/exceptions/UserExceptions.class
 com/keepnote/authentication/KeepnoteAuthenticationApplication.class
+com/keepnote/authentication/exceptions/UserExceptions$UserNotFound.class
+com/keepnote/authentication/utility/JwtTokenUtil.class
+com/keepnote/authentication/repository/AuthenticationRepository.class
+com/keepnote/authentication/serviceimpl/AuthenticationServiceImpl.class
+com/keepnote/authentication/config/WebSecurityConfig.class
+com/keepnote/authentication/exceptions/UserExceptions$UserAlreadyExists.class
+com/keepnote/authentication/controller/AuthenticationController.class
+com/keepnote/authentication/service/AuthenticationService.class
+com/keepnote/authentication/model/User.class

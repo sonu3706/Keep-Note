@@ -9,6 +9,7 @@ import { ConfigHttpLoader } from '@ngx-config/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConfigLoader, ConfigModule } from '@ngx-config/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -23,6 +24,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       deps: [HttpClient],
     }),
     BrowserAnimationsModule,
+    LoggerModule.forRoot({
+      level: NgxLoggerLevel.TRACE,
+      serverLogLevel: NgxLoggerLevel.ERROR,
+      disableConsoleLogging: false
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],

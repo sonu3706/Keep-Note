@@ -1,1 +1,9 @@
+/home/chandan/Demo_Projects/keep-note/keepnote-authentication/src/main/java/com/keepnote/authentication/service/AuthenticationService.java
+/home/chandan/Demo_Projects/keep-note/keepnote-authentication/src/main/java/com/keepnote/authentication/repository/AuthenticationRepository.java
+/home/chandan/Demo_Projects/keep-note/keepnote-authentication/src/main/java/com/keepnote/authentication/config/WebSecurityConfig.java
+/home/chandan/Demo_Projects/keep-note/keepnote-authentication/src/main/java/com/keepnote/authentication/controller/AuthenticationController.java
 /home/chandan/Demo_Projects/keep-note/keepnote-authentication/src/main/java/com/keepnote/authentication/KeepnoteAuthenticationApplication.java
+/home/chandan/Demo_Projects/keep-note/keepnote-authentication/src/main/java/com/keepnote/authentication/exceptions/UserExceptions.java
+/home/chandan/Demo_Projects/keep-note/keepnote-authentication/src/main/java/com/keepnote/authentication/serviceimpl/AuthenticationServiceImpl.java
+/home/chandan/Demo_Projects/keep-note/keepnote-authentication/src/main/java/com/keepnote/authentication/utility/JwtTokenUtil.java
+/home/chandan/Demo_Projects/keep-note/keepnote-authentication/src/main/java/com/keepnote/authentication/model/User.java

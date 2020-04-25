@@ -1,5 +1,10 @@
 {
   "baseUrl": {
-    "authentication": "http://localhost:8081/auth"
+    "authentication": "http://localhost:8081/"
+  },
+  "restUrl": {
+    "register": "auth/register",
+    "login": "auth/login",
+    "checkEmailStatus": "auth/"
   }
 }

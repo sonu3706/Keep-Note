@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConfigService } from '@ngx-config/core';
+import { BaseUrl, RestUrl } from '../models/base-url';
+import { Configuration } from '../models/configuration';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +9,11 @@ import { ConfigService } from '@ngx-config/core';
 export class AppConfigService {
   constructor(private configService: ConfigService) {}
 
-  public getBaseUrl(serviceName: string): string {
-    return this.configService.getSettings().baseUrl.serviceName;
+  public get basUrl(): BaseUrl {
+    return (this.configService.getSettings() as Configuration).baseUrl;
+  }
+
+  public get restUrl(): RestUrl {
+    return (this.configService.getSettings() as Configuration).restUrl;
   }
 }

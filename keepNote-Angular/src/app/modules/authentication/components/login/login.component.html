@@ -1,7 +1,7 @@
 <section class="container-fluid bg">
   <section class="row justify-content-center">
     <section class="col-12 col-sm-6 col-md-3">
-      <form class="form-container">
+      <form class="form-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input
@@ -10,6 +10,7 @@
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
+            formControlName="email"
           />
           <small id="emailHelp" class="form-text text-muted"
             >We'll never share your email with anyone else.</small
@@ -22,6 +23,7 @@
             class="form-control"
             id="exampleInputPassword1"
             placeholder="Password"
+            formControlName="password"
           />
         </div>
         <div class="form-check">
