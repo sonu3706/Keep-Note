@@ -1,13 +1,14 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      <mat-form-field appearance="standard">
-        <input matInput placeholder="Title"/>
-      </mat-form-field>
-    </mat-panel-title>
-  </mat-expansion-panel-header>
-  <mat-form-field class="take-note" appearance="standard">
-    <textarea cdkTextareaAutosize matInput placeholder="Take Note"></textarea>
-  </mat-form-field>
-</mat-expansion-panel>
-
+<div class="container">
+  <h2 mat-dialog-title> Take Note</h2>
+  <div mat-dialog-content>
+    <mat-form-field appearance="standard">
+      <input matInput placeholder="Title"/>
+    </mat-form-field>
+    <mat-form-field class="take-note" appearance="standard">
+      <textarea cdkTextareaAutosize matInput placeholder="Take Note"></textarea>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary">Save</button>
+  </div>
+</div>

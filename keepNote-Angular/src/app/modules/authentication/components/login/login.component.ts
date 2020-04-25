@@ -7,6 +7,7 @@ import { NGXLogger } from 'ngx-logger';
 import { User } from '../../../../models/user';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../../../utility/token-storage.service';
+import { DataSharingService } from '../../../../services/data-sharing.service';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     public configService: ConfigService,
     private logger: NGXLogger,
     public route: Router,
-    private tokenStorageService: TokenStorageService) {
+    private tokenStorageService: TokenStorageService,
+    private dataSharingService: DataSharingService) {
     this.appConfig = new AppConfigService(configService);
     this.createForm();
   }
@@ -58,6 +60,7 @@ export class LoginComponent implements OnInit {
     ).subscribe((data) => {
      this.logger.log('Data value', data);
      this.tokenStorageService.setTokenAndUserId(data['access_token'], data['userId']);
+     this.dataSharingService.sharedLoggedInState(true);
       this.route.navigate(['/note/dashboard']);
     }, (error) => {
       this.logger.error('Issue while login ', error);
