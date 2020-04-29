@@ -1,6 +1,7 @@
 {
   "baseUrl": {
-    "authentication": "http://localhost:8081/"
+    "authentication": "http://localhost:8081/",
+    "note": ""
   },
   "restUrl": {
     "register": "auth/register",

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-take-note',
@@ -8,9 +9,25 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class TakeNoteComponent implements OnInit {
 
-  constructor(public  dialogRef: MatDialog) { }
+  public noteForm: FormGroup;
+
+  constructor(public  dialogRef: MatDialog,
+              private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
+    this.createNoteForm();
+  }
+
+  private createNoteForm(): void {
+    this.noteForm = this.formBuilder.group({
+      title: ['', [Validators.required]],
+      content: ['', [Validators.required]]
+    });
+  }
+
+  public saveNote(): void {
+    console.log(this.noteForm.value);
   }
 
 }

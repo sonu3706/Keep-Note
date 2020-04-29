@@ -42,7 +42,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (!authenticationRepository.existsById(user.getUserEmail())) {
             user.setActiveStatus(Boolean.TRUE);
             user.setMemberSince(LocalDateTime.now());
-            System.out.println(user);
             authenticationRepository.save(user);
         } else {
             System.out.println("throw exception");

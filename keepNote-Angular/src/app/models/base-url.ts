@@ -1,5 +1,6 @@
 export interface BaseUrl {
   authentication: string;
+  note: string;
 }
 
 export interface RestUrl {

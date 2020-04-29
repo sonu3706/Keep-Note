@@ -10,10 +10,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConfigLoader, ConfigModule } from '@ngx-config/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule,

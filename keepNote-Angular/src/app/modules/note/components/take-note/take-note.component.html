@@ -1,14 +1,16 @@
 <div class="container">
   <h2 mat-dialog-title> Take Note</h2>
   <div mat-dialog-content>
-    <mat-form-field appearance="standard">
-      <input matInput placeholder="Title"/>
-    </mat-form-field>
-    <mat-form-field class="take-note" appearance="standard">
-      <textarea cdkTextareaAutosize matInput placeholder="Take Note"></textarea>
-    </mat-form-field>
+    <form [formGroup]="noteForm">
+      <mat-form-field appearance="standard">
+        <input matInput placeholder="Title" formControlName="title"/>
+      </mat-form-field>
+      <mat-form-field class="take-note" appearance="standard">
+        <textarea cdkTextareaAutosize matInput placeholder="Take Note" formControlName="content"></textarea>
+      </mat-form-field>
+    </form>
   </div>
   <div mat-dialog-actions>
-    <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="primary" (click)="saveNote()">Save</button>
   </div>
 </div>
