@@ -12,7 +12,7 @@ import { DataSharingService } from '../../../../services/data-sharing.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
     private logger: NGXLogger,
     public route: Router,
     private tokenStorageService: TokenStorageService,
-    private dataSharingService: DataSharingService) {
+    private dataSharingService: DataSharingService
+  ) {
     this.appConfig = new AppConfigService(configService);
     this.createForm();
   }
@@ -36,35 +37,49 @@ export class LoginComponent implements OnInit {
   private createForm(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
     });
   }
 
   public onSubmit(): void {
     if (this.loginForm.valid) {
       this.logger.info('Form valid, login in progress');
-        this.setUserData();
-        this.login();
+      this.setUserData();
+      this.login();
     }
   }
 
   private setUserData(): void {
-    this.user = new User(this.loginForm.controls['email'].value, null, this.loginForm.controls['password'].value, null, null, null);
+    this.user = new User(
+      this.loginForm.controls['email'].value,
+      null,
+      this.loginForm.controls['password'].value,
+      null,
+      null,
+      null
+    );
   }
 
   public login(): void {
-    this.loginService.http_post(
-      this.appConfig.basUrl.authentication,
-      this.appConfig.restUrl.login,
-      this.user
-    ).subscribe((data) => {
-     this.logger.log('Data value', data);
-     this.tokenStorageService.setTokenAndUserId(data['access_token'], data['userId']);
-     this.dataSharingService.sharedLoggedInState(true);
-      this.route.navigate(['/note/dashboard']);
-    }, (error) => {
-      this.logger.error('Issue while login ', error);
-    });
-
+    this.loginService
+      .http_post(
+        this.appConfig.basUrl.authentication,
+        this.appConfig.restUrl.login,
+        this.user
+      )
+      .subscribe(
+        (data) => {
+          this.logger.log('Data value', data);
+          this.tokenStorageService.setTokenAndUserId(
+            data['access_token'],
+            data['userId']
+          );
+          this.dataSharingService.sharedLoggedInState(true);
+          this.route.navigate(['/note/dashboard']);
+        },
+        (error) => {
+          this.logger.error('Issue while login ', error);
+        }
+      );
   }
 }

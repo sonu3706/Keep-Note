@@ -6,11 +6,9 @@ import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
   imports: [CommonModule, RouterModule, MatDialogModule, MatButtonModule],
-  exports: [HeaderComponent, FooterComponent, MatDialogModule, MatButtonModule]
+  exports: [HeaderComponent, FooterComponent, MatDialogModule, MatButtonModule],
 })
-export class SharedModule {
-}
+export class SharedModule {}

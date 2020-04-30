@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
@@ -41,14 +41,17 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       name: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
+      confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   public onSubmit(): void {
     let password = this.registerForm.controls['password'].value;
     let confirmPassword = this.registerForm.controls['confirmPassword'].value;
-    if (this.registerForm.valid && this.isPasswordAndConfirmPasswordMatch(password, confirmPassword)) {
+    if (
+      this.registerForm.valid &&
+      this.isPasswordAndConfirmPasswordMatch(password, confirmPassword)
+    ) {
       this.createUserObject();
       this.registerUser();
     } else {
@@ -57,8 +60,8 @@ export class RegisterComponent implements OnInit {
   }
 
   /*
-  * create user object from registerForm
-  * */
+   * create user object from registerForm
+   * */
   private createUserObject(): void {
     this.userObject = new User(
       this.registerForm.controls[`email`].value,
@@ -71,11 +74,14 @@ export class RegisterComponent implements OnInit {
   }
 
   /*
-  * match password and confirmPassword
-  * @param password: string, confirmPassword: string
-  * @return status: boolean
-  * */
-  private isPasswordAndConfirmPasswordMatch(password: string, confirmPassword: string): boolean {
+   * match password and confirmPassword
+   * @param password: string, confirmPassword: string
+   * @return status: boolean
+   * */
+  private isPasswordAndConfirmPasswordMatch(
+    password: string,
+    confirmPassword: string
+  ): boolean {
     let status: boolean = false;
     if (password.length === confirmPassword.length && password === confirmPassword) {
       this.logger.info('Password and confirmPassword matched');
@@ -88,22 +94,25 @@ export class RegisterComponent implements OnInit {
 
   private registerUser(): void {
     this.logger.info('Register User');
-    this.register.http_post(
-      this.config.basUrl.authentication,
-      this.config.restUrl.register,
-      this.userObject
-    ).subscribe((data: User) => {
-        console.log(data);
-        if (data) {
-          this.router.navigate([`/auth/login`]);
+    this.register
+      .http_post(
+        this.config.basUrl.authentication,
+        this.config.restUrl.register,
+        this.userObject
+      )
+      .subscribe(
+        (data: User) => {
+          console.log(data);
+          if (data) {
+            this.router.navigate([`/auth/login`]);
+          }
+        },
+        (error) => {
+          this.logger.error('Error while making request', error);
+          console.log(error.status);
+          if (error.status === 409) this.registerForm.reset();
         }
-      },
-      (error) => {
-        this.logger.error('Error while making request', error);
-        console.log(error.status);
-        if (error.status === 409)
-          this.registerForm.reset();
-      });
+      );
   }
 
   public checkEmailExists(): void {
@@ -114,23 +123,25 @@ export class RegisterComponent implements OnInit {
   }
 
   public checkEmailStatus(email: string): void {
-    this.checkEmail.http_get(
-      this.config.basUrl.authentication,
-      this.config.restUrl.checkEmailStatus.concat(email)
-    ).subscribe((data) => {
-      if (data && data === true) {
-        this.showEmailError = true;
-        this.showErrorObject = 'Show error';
-        this.registerForm.controls['name'].disable();
-        this.registerForm.controls['password'].disable();
-        this.registerForm.controls['confirmPassword'].disable();
-      } else {
-        this.showEmailError = false;
-        this.showErrorObject = 'No Error';
-        this.registerForm.controls['name'].enable();
-        this.registerForm.controls['password'].enable();
-        this.registerForm.controls['confirmPassword'].enable();
-      }
-    });
+    this.checkEmail
+      .http_get(
+        this.config.basUrl.authentication,
+        this.config.restUrl.checkEmailStatus.concat(email)
+      )
+      .subscribe((data) => {
+        if (data && data === true) {
+          this.showEmailError = true;
+          this.showErrorObject = 'Show error';
+          this.registerForm.controls['name'].disable();
+          this.registerForm.controls['password'].disable();
+          this.registerForm.controls['confirmPassword'].disable();
+        } else {
+          this.showEmailError = false;
+          this.showErrorObject = 'No Error';
+          this.registerForm.controls['name'].enable();
+          this.registerForm.controls['password'].enable();
+          this.registerForm.controls['confirmPassword'].enable();
+        }
+      });
   }
 }

@@ -6,8 +6,8 @@
           <div class="form-group">
             <label for="InputEmail">Email</label>
             <input
-              [ngClass]="{'is-invalid' : showErrorObject === 'Show error' }"
-              [ngClass]="{'is-valid': showErrorObject === 'No Error' }"
+              [ngClass]="{ 'is-invalid': showErrorObject === 'Show error' }"
+              [ngClass]="{ 'is-valid': showErrorObject === 'No Error' }"
               class="form-control"
               formControlName="email"
               id="InputEmail"

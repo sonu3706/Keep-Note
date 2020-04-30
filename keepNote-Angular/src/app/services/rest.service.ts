@@ -4,19 +4,18 @@ import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
+    'Content-Type': 'application/json',
+  }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 /*
-* Responsible in making HTTP request
-* */
+ * Responsible in making HTTP request
+ * */
 export class RestService<T> {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   public http_post(baseUrl: string, restUrl: string, body: any): Observable<T> {
     return this.http.post<T>(baseUrl.concat(restUrl), body, httpOptions);

@@ -9,10 +9,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   declarations: [DashboardComponent, TakeNoteComponent],
-  imports: [CommonModule, NoteRoutingModule, MatExpansionModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, SharedModule]
+  imports: [
+    CommonModule,
+    NoteRoutingModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
+  ],
 })
-export class NoteModule {
-}
+export class NoteModule {}

@@ -30,8 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoggerModule.forRoot({
       level: NgxLoggerLevel.TRACE,
       serverLogLevel: NgxLoggerLevel.ERROR,
-      disableConsoleLogging: false
-    })
+      disableConsoleLogging: false,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

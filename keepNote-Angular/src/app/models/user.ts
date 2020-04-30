@@ -5,11 +5,16 @@ export class User {
   public password: string;
   public activeStatus: boolean;
   public lastLoggedIn: Date;
-  public memberSince: Date
+  public memberSince: Date;
 
-
-
-  constructor(userEmail: string, userName: string, password: string, activeStatus: boolean, lastLoggedIn: Date, memberSince: Date) {
+  constructor(
+    userEmail: string,
+    userName: string,
+    password: string,
+    activeStatus: boolean,
+    lastLoggedIn: Date,
+    memberSince: Date
+  ) {
     this.userEmail = userEmail;
     this.userName = userName;
     this.password = password;
@@ -17,5 +22,4 @@ export class User {
     this.lastLoggedIn = lastLoggedIn;
     this.memberSince = memberSince;
   }
-
 }

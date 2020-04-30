@@ -24,13 +24,22 @@
         <li class="nav-item" *ngIf="!isUserLoggedIn">
           <a class="nav-link" [routerLink]="['/auth/register']">Register</a>
         </li>
-        <li class="nav-item" [ngClass]="{'active': isUserLoggedIn }" *ngIf="isUserLoggedIn">
+        <li
+          class="nav-item"
+          [ngClass]="{ active: isUserLoggedIn }"
+          *ngIf="isUserLoggedIn"
+        >
           <a class="nav-link" (click)="openDialog()">Add Note</a>
         </li>
-        <li class="nav-item" [ngClass]="{'active': isUserLoggedIn }" *ngIf="isUserLoggedIn">
+        <li
+          class="nav-item"
+          [ngClass]="{ active: isUserLoggedIn }"
+          *ngIf="isUserLoggedIn"
+        >
           <a class="nav-link" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>
   </nav>
 </header>
+{{ isUserLoggedIn }}

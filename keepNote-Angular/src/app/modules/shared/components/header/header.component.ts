@@ -11,22 +11,41 @@ import { DataSharingService } from '../../../../services/data-sharing.service';
 })
 export class HeaderComponent implements OnInit {
   public isUserLoggedIn: boolean = false;
-  constructor(public dialog: MatDialog, private route: Router, private dataSharingService: DataSharingService) {}
+  public dialogOpened: boolean = false;
+
+  constructor(
+    public dialog: MatDialog,
+    private route: Router,
+    private dataSharingService: DataSharingService
+  ) {}
 
   ngOnInit(): void {
+    this.checkToken();
     this.isLoggedInUser();
+    this.dialog.afterAllClosed.subscribe((data) => {
+      this.dialogOpened = false;
+    });
   }
   public isLoggedInUser(): void {
-   this.dataSharingService.loginUserStatus.subscribe(data => {
-        this.isUserLoggedIn = data;
+    this.dataSharingService.loginUserStatus.subscribe((data) => {
+      this.isUserLoggedIn = data;
     });
   }
+
+  public checkToken(): void {
+    if (window.sessionStorage.getItem('access_token')) {
+      this.isUserLoggedIn = true;
+    }
+  }
   public openDialog(): void {
-    console.log('dialog');
-    const dialogRef = this.dialog.open(TakeNoteComponent, {
-      width: '600px',
-      height: '300px'
-    });
+    if (this.dialogOpened) {
+    } else {
+      const dialogRef = this.dialog.open(TakeNoteComponent, {
+        width: '600px',
+        height: '300px',
+      });
+      this.dialogOpened = true;
+    }
   }
 
   public logout(): void {

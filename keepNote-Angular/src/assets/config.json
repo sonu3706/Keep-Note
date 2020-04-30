@@ -1,11 +1,13 @@
 {
   "baseUrl": {
     "authentication": "http://localhost:8081/",
-    "note": ""
+    "note": "http://localhost:8082/"
   },
   "restUrl": {
     "register": "auth/register",
     "login": "auth/login",
-    "checkEmailStatus": "auth/"
+    "checkEmailStatus": "auth/",
+    "createNote": "notes",
+    "getNotesByUserId": "notes/"
   }
 }
