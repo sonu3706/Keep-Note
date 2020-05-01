@@ -8,9 +8,10 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { SharedModule } from '../shared/shared.module';
+import { NoteCardComponent } from './components/note-card/note-card.component';
 
 @NgModule({
-  declarations: [DashboardComponent, TakeNoteComponent],
+  declarations: [DashboardComponent, TakeNoteComponent, NoteCardComponent],
   imports: [
     CommonModule,
     NoteRoutingModule,

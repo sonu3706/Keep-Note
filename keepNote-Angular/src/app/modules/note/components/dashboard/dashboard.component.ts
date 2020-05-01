@@ -12,6 +12,7 @@ import { NGXLogger } from 'ngx-logger';
 })
 export class DashboardComponent implements OnInit {
   public appConfig: AppConfigService;
+  public notes: Note[] = [];
 
   constructor(
     private configService: ConfigService,
@@ -19,11 +20,10 @@ export class DashboardComponent implements OnInit {
     private logger: NGXLogger
   ) {
     this.appConfig = new AppConfigService(this.configService);
-  }
-
-  ngOnInit(): void {
     this.getNotesByUserId();
   }
+
+  ngOnInit(): void {}
 
   private getNotesByUserId(): void {
     const userId = window.sessionStorage.getItem('userId');
@@ -34,7 +34,8 @@ export class DashboardComponent implements OnInit {
       )
       .subscribe(
         (data) => {
-          console.log(data);
+          console.log(data['notes']);
+          this.notes = data['notes'];
         },
         (error) => {
           this.logger.error('Unable to get notes for user :- ', userId);
