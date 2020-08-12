@@ -26,14 +26,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public Map<String, String> login(User user) throws UserExceptions.UserNameAndPasswordMismatch {
         Map<String, String> map = new HashMap<>();
-        User fetchedUser = authenticationRepository.findById(user.getUserEmail()).get();
-        if (user.getPassword().equals(fetchedUser.getPassword())) {
-            String token = this.jwtTokenUtil.generateToken(user);
-            map.put("access_token", token);
-            map.put("userId", user.getUserEmail());
-        } else {
-            throw new UserExceptions.UserNameAndPasswordMismatch("Email and password does not match");
-        }
+        User fetchedUser = authenticationRepository.findByUserEmailAndPassword(user.getUserEmail(), user.getPassword())
+                .orElseThrow(() -> new UserExceptions.UserNameAndPasswordMismatch("Email and password does not match"));
+        map.put("access_token", this.jwtTokenUtil.generateToken(fetchedUser.getUserEmail()));
+        map.put("userId", fetchedUser.getUserEmail());
         return map;
     }
 
@@ -54,5 +50,4 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public Boolean checkEmailExists(String email) {
         return authenticationRepository.existsById(email.trim());
     }
-
 }

@@ -47,8 +47,8 @@ public class JwtTokenUtil {
         return (userName.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
     /*Generate Token*/
-    public String generateToken(User userDetails) {
-        return Jwts.builder().setSubject(userDetails.getUserName()).setIssuedAt(new Date(System.currentTimeMillis()))
+    public String generateToken(String userName) {
+        return Jwts.builder().setSubject(userName).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY*1000)).signWith(SignatureAlgorithm.HS256, secret).compact();
     }
 
